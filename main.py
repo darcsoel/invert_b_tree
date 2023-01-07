@@ -1,20 +1,34 @@
-"""
-
-This is a sample Python script.
-
-Press Shift+F10 to execute it or replace it with your code.
-Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.//
-
-"""
+from typing import Optional
 
 
-def print_hi(name: str) -> None:
-    """Use a breakpoint in the code line below to debug your script."""
-    print(f"Hi, {name}...")  # Press Ctrl+F8 to toggle the breakpoint.
+class Node:
+    def __init__(self, value: int) -> None:
+        self.value = value
+        self.left: Optional["Node"] = None
+        self.right: Optional["Node"] = None
+
+    def insert(self, value: int) -> None:
+        """Insert new node"""
+
+        if value < self.value:
+            if self.left is None:
+                self.left = Node(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = Node(value)
+            else:
+                self.right.insert(value)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == "__main__":
-    print_hi("PyCharm")
+def invert(node: Node) -> Node:
+    node.left, node.right = node.right, node.left
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if node.left:
+        invert(node.left)
+
+    if node.right:
+        invert(node.right)
+
+    return node

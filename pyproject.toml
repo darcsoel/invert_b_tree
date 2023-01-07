@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "repo_template"
+name = "invert_binary_tree"
 version = "0.1.0"
-description = "Template description"
+description = "Invert binary tree"
 authors = ["Ross <rostikvunarchuk@gmail.com>"]
 
 [tool.poetry.dependencies]
