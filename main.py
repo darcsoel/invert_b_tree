@@ -2,6 +2,8 @@ from typing import Optional
 
 
 class Node:
+    """Node structure"""
+
     def __init__(self, value: int) -> None:
         self.value = value
         self.left: Optional["Node"] = None
@@ -21,14 +23,17 @@ class Node:
             else:
                 self.right.insert(value)
 
+    def invert(self) -> "Node":
+        """
+        Invert node recursivly
+        """
 
-def invert(node: Node) -> Node:
-    node.left, node.right = node.right, node.left
+        self.left, self.right = self.right, self.left
 
-    if node.left:
-        invert(node.left)
+        if self.left:
+            self.left.invert()
 
-    if node.right:
-        invert(node.right)
+        if self.right:
+            self.right.invert()
 
-    return node
+        return self

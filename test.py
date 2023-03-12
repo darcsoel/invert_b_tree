@@ -2,7 +2,7 @@
 Unit tests
 """
 
-from main import Node, invert
+from main import Node
 
 
 def test_1() -> None:
@@ -22,7 +22,7 @@ def test_1() -> None:
     assert node.right.left.value == 6
     assert node.right.right.value == 8
 
-    inverted = invert(node)
+    inverted = node.invert()
 
     assert inverted.value == 5
     assert inverted.left.value == 7
